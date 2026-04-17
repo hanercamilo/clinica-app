@@ -3,6 +3,7 @@ package com.devsenior_sala3.clinica_app.controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.devsenior_sala3.clinica_app.exception.DoctorNotFoundException;
 import com.devsenior_sala3.clinica_app.model.Doctor;
 import com.devsenior_sala3.clinica_app.service.IDoctorService;
 
@@ -11,6 +12,7 @@ import jakarta.validation.Valid;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -66,14 +68,13 @@ public class DoctorController {
     }
 
     @PutMapping("/{doctorId}")
-    public ResponseEntity<Doctor> updateDoctor(@PathVariable Long doctorId, @Valid @RequestBody Doctor doctor) {
+    public ResponseEntity<String> updateDoctor(@PathVariable Long doctorId, @Valid @RequestBody Doctor doctor) {
         try {
-            Doctor updatedDoctor = doctorService.updateDoctor(doctorId, doctor);
-            if (updatedDoctor != null) {
-                return ResponseEntity.ok(updatedDoctor); // 200 OK
-            } else {
-                return ResponseEntity.notFound().build(); // 404 Not Found
-            }
+            doctor.setDoctorId(doctorId); // Asegurar que el doctor tenga el ID de la ruta
+            doctorService.updateDoctor(doctorId, doctor);
+            return ResponseEntity.ok("Doctor actualizado correctamente"); // 200 OK
+        } catch (DoctorNotFoundException e) {
+            return ResponseEntity.status(404).body(e.getMessage()); // 404 Not Found
         } catch (Exception e) {
             return ResponseEntity.status(500).build();
         }
