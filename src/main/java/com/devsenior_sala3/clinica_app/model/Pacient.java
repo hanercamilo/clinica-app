@@ -2,7 +2,7 @@ package com.devsenior_sala3.clinica_app.model;
 
 import jakarta.validation.constraints.NotBlank;
 
-public class Paciente {
+public class Pacient {
 @NotBlank(message = ("El campo no puede estar vacio"))
 private  String pacientName;
 @NotBlank(message = ("El campo no puede estar vacio"))
@@ -10,9 +10,9 @@ private  int age;
 @NotBlank(message = ("El campo no puede estar vacio"))
 private  String information;
 private  String date;
-public Paciente() {
+public Pacient() {
 }
-public Paciente(@NotBlank(message = "El campo no puede estar vacio") String pacientName,
+public Pacient(@NotBlank(message = "El campo no puede estar vacio") String pacientName,
         @NotBlank(message = "El campo no puede estar vacio") int age,
         @NotBlank(message = "El campo no puede estar vacio") String information, String date) {
     this.pacientName = pacientName;

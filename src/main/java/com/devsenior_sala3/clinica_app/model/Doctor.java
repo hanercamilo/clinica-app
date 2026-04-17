@@ -3,7 +3,7 @@ package com.devsenior_sala3.clinica_app.model;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
-public class Medico {
+public class Doctor {
 
     private Long doctorId;
 
@@ -23,10 +23,10 @@ public class Medico {
     @Size(min = 2, max = 50, message = "La especialidad del médico debe tener entre 2 y 50 caracteres")
     private String doctorSpecialty;
 
-    public Medico() {
+    public Doctor() {
     }
 
-    public Medico(Long doctorId, String documentType, String documentNumber, String doctorName, String doctorSpecialty) {
+    public Doctor(Long doctorId, String documentType, String documentNumber, String doctorName, String doctorSpecialty) {
         this.doctorId = doctorId;
         DocumentType = documentType;
         DocumentNumber = documentNumber;
