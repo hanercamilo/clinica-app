@@ -54,6 +54,30 @@ public class Doctor {
         return doctorSpecialty;
     }
 
+    public void setId(Long doctorId) {
+        this.doctorId = doctorId;
+    }
+
+    public void setDocumentType(String documentType) {
+        DocumentType = documentType;
+    }
+
+    public void setDocumentNumber(String documentNumber) {
+        DocumentNumber = documentNumber;
+    }
+
+    public void setDoctorName(String doctorName) {
+        this.doctorName = doctorName;
+    }
+
+    public void setDoctorSpecialty(String doctorSpecialty) {
+        this.doctorSpecialty = doctorSpecialty;
+    }
+
+    public void setDoctorId(Long doctorId) {
+        this.doctorId = doctorId;
+    }
+
     
 
 }
