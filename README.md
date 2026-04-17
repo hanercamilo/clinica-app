@@ -12,7 +12,7 @@ Aplicación backend simple en Spring Boot para manejar datos de médicos en una 
 
 ## Equipo de Trabajo
 
-- Juan Camilo 
+- Juan Camilo Ramirez
 - Haner Camilo Perea
 
 ## Endpoints disponibles
