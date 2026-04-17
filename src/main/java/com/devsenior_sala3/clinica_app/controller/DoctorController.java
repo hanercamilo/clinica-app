@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.devsenior_sala3.clinica_app.model.Doctor;
 import com.devsenior_sala3.clinica_app.service.IDoctorService;
 
+import jakarta.validation.Valid;
+
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
@@ -53,7 +55,7 @@ public class DoctorController {
     }
 
     @PostMapping
-    public ResponseEntity<Doctor> createDoctor(@RequestBody Doctor doctor) {
+    public ResponseEntity<Doctor> createDoctor(@Valid @RequestBody Doctor doctor) {
         try {
             Doctor createdDoctor = doctorService.createDoctor(doctor);
             return ResponseEntity.status(201).body(createdDoctor); // 201 Created
@@ -63,7 +65,7 @@ public class DoctorController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Doctor> updateDoctor(@PathVariable Long id, @RequestBody Doctor doctor) {
+    public ResponseEntity<Doctor> updateDoctor(@PathVariable Long id, @Valid @RequestBody Doctor doctor) {
         try {
             Doctor updatedDoctor = doctorService.updateDoctor(id, doctor);
             if (updatedDoctor != null) {
