@@ -1,5 +1,8 @@
 package com.devsenior_sala3.clinica_app.exception;
 
-public class PatientNotFoundException {
+public class PatientNotFoundException extends RuntimeException {
 
+    public PatientNotFoundException(String message) {
+        super(message);
+    }
 }

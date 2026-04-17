@@ -7,6 +7,7 @@ import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.stereotype.Repository;
 
+import com.devsenior_sala3.clinica_app.exception.DoctorNotFoundException;
 import com.devsenior_sala3.clinica_app.model.Doctor;
 
 @Repository
@@ -44,7 +45,7 @@ public class DoctorRepository {
         return doctor;
     }
 
-    public Doctor update(Doctor doctor) {
+    public Doctor update(Doctor doctor) throws DoctorNotFoundException {
         Optional<Doctor> existingDoctorOpt = findById(doctor.getDoctorId());
         if (existingDoctorOpt.isPresent()) {
             Doctor existingDoctor = existingDoctorOpt.get();
@@ -53,8 +54,9 @@ public class DoctorRepository {
             existingDoctor.setDoctorName(doctor.getDoctorName());
             existingDoctor.setDoctorSpecialty(doctor.getDoctorSpecialty());
             return existingDoctor;
+        } else {
+            throw new DoctorNotFoundException("Doctor con ID " + doctor.getDoctorId() + " no encontrado.");
         }
-        return null;
     }
 
     public boolean deleteById(Long id) {
