@@ -10,6 +10,13 @@ private  int age;
 @NotBlank(message = ("El campo no puede estar vacio"))
 private  String information;
 private  String date;
+private long id;
+public long getId() {
+    return id;
+}
+public void setId(long id) {
+    this.id = id;
+}
 public Pacient() {
 }
 public Pacient(@NotBlank(message = "El campo no puede estar vacio") String pacientName,
@@ -32,6 +39,19 @@ public String getInformation() {
 public String getDate() {
     return date;
 }
+public void setPacientName(String pacientName) {
+    this.pacientName = pacientName;
+}
+public void setAge(int age) {
+    this.age = age;
+}
+public void setInformation(String information) {
+    this.information = information;
+}
+public void setDate(String date) {
+    this.date = date;
+}
+
 
 
 
