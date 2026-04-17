@@ -9,11 +9,11 @@ public class Doctor {
 
     @NotBlank(message = "Document type is required")
     @Size(min = 2, max = 3, message = "El tipo de documento debe tener entre 2 y 3 caracteres")
-    private String DocumentType;
+    private String documentType;
 
     @NotBlank(message = "Document number is required")
     @Size(min = 5, max = 20, message = "El número de documento debe tener entre 5 y 20 caracteres")
-    private String DocumentNumber;
+    private String documentNumber;
 
     @NotBlank(message = "Doctor name is required")
     @Size(min = 2, max = 50, message = "El nombre del médico debe tener entre 2 y 50 caracteres")
@@ -28,8 +28,8 @@ public class Doctor {
 
     public Doctor(Long doctorId, String documentType, String documentNumber, String doctorName, String doctorSpecialty) {
         this.doctorId = doctorId;
-        DocumentType = documentType;
-        DocumentNumber = documentNumber;
+        this.documentType = documentType;
+        this.documentNumber = documentNumber;
         this.doctorName = doctorName;
         this.doctorSpecialty = doctorSpecialty;
     }
@@ -39,11 +39,11 @@ public class Doctor {
     }
 
     public String getDocumentType() {
-        return DocumentType;
+        return documentType;
     }
 
     public String getDocumentNumber() {
-        return DocumentNumber;
+        return documentNumber;
     }
 
     public String getDoctorName() {
@@ -54,16 +54,16 @@ public class Doctor {
         return doctorSpecialty;
     }
 
-    public void setId(Long doctorId) {
+    public void setDoctorId(Long doctorId) {
         this.doctorId = doctorId;
     }
 
     public void setDocumentType(String documentType) {
-        DocumentType = documentType;
+        this.documentType = documentType;
     }
 
     public void setDocumentNumber(String documentNumber) {
-        DocumentNumber = documentNumber;
+        this.documentNumber = documentNumber;
     }
 
     public void setDoctorName(String doctorName) {
@@ -73,11 +73,6 @@ public class Doctor {
     public void setDoctorSpecialty(String doctorSpecialty) {
         this.doctorSpecialty = doctorSpecialty;
     }
-
-    public void setDoctorId(Long doctorId) {
-        this.doctorId = doctorId;
-    }
-
-    
+   
 
 }

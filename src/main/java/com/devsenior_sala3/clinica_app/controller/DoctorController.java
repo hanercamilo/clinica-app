@@ -10,6 +10,7 @@ import jakarta.validation.Valid;
 
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -43,10 +44,10 @@ public class DoctorController {
         }
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Doctor> getDoctorById(@PathVariable Long id) {
+    @GetMapping("/{doctorId}")
+    public ResponseEntity<Doctor> getDoctorById(@PathVariable Long doctorId) {
         try {
-            return doctorService.getDoctorById(id)
+            return doctorService.getDoctorById(doctorId)
                     .map(ResponseEntity::ok) // si existe → 200 con el doctor
                     .orElse(ResponseEntity.notFound().build()); // si no → 404 Not Found
         } catch (Exception e) {
@@ -64,10 +65,10 @@ public class DoctorController {
         }
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Doctor> updateDoctor(@PathVariable Long id, @Valid @RequestBody Doctor doctor) {
+    @PutMapping("/{doctorId}")
+    public ResponseEntity<Doctor> updateDoctor(@PathVariable Long doctorId, @Valid @RequestBody Doctor doctor) {
         try {
-            Doctor updatedDoctor = doctorService.updateDoctor(id, doctor);
+            Doctor updatedDoctor = doctorService.updateDoctor(doctorId, doctor);
             if (updatedDoctor != null) {
                 return ResponseEntity.ok(updatedDoctor); // 200 OK
             } else {
@@ -78,13 +79,18 @@ public class DoctorController {
         }
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteDoctor(@PathVariable Long id) {
+    @DeleteMapping("/{doctorId}")
+    public ResponseEntity<String> deleteDoctor(@PathVariable Long doctorId) {
         try {
-            doctorService.deleteDoctor(id);
-            return ResponseEntity.noContent().build(); // 204 No Content
+            boolean eliminado = doctorService.deleteDoctor(doctorId);
+            if (!eliminado) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                        .body("No se encontró ningún doctor con id " + doctorId); // 404
+            }
+            return ResponseEntity.ok("Doctor con id " + doctorId + " eliminado correctamente"); // 200
         } catch (Exception e) {
-            return ResponseEntity.status(500).build();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Error al eliminar el doctor"); // 500
         }
     }
 

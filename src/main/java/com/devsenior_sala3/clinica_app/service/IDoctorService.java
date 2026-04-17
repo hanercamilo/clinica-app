@@ -9,11 +9,11 @@ public interface IDoctorService {
     
     List<Doctor> getAllDoctors();
 
-    Optional<Doctor> getDoctorById(Long id);
+    Optional<Doctor> getDoctorById(Long doctorId);
 
     Doctor createDoctor(Doctor doctor);
 
-    Doctor updateDoctor(Long id, Doctor doctor);
+    Doctor updateDoctor(Long doctorId, Doctor doctor);
 
-    void deleteDoctor(Long id);
+    boolean deleteDoctor(Long doctorId);
 }
