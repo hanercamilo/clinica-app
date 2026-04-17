@@ -1,6 +1,7 @@
 package com.devsenior_sala3.clinica_app.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.devsenior_sala3.clinica_app.model.Doctor;
 import com.devsenior_sala3.clinica_app.repository.DoctorRepository;
@@ -19,8 +20,8 @@ public class DoctorService implements IDoctorService {
     }
 
     @Override
-    public Doctor getDoctorById(Long id) {
-        return doctorRepository.findById(id).orElse(null);
+    public Optional<Doctor> getDoctorById(Long id) {
+        return doctorRepository.findById(id);
     }
 
     @Override
