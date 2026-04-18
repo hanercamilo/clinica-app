@@ -3,12 +3,14 @@ package com.devsenior_sala3.clinica_app.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.devsenior_sala3.clinica_app.model.Pacient;
 import com.devsenior_sala3.clinica_app.repository.PacientRepository;
 @Service
 public class PacientService implements IPacientService {
+    @Autowired
     private final PacientRepository pacientRepository;
 
     public PacientService(PacientRepository pacientRepository) {
