@@ -6,6 +6,7 @@ import java.util.Optional;
 import com.devsenior_sala3.clinica_app.model.Pacient;
 
 public interface IPacientService {
+    
 
 List<Pacient>listarpacients();
 Optional<Pacient>listarPorId();
