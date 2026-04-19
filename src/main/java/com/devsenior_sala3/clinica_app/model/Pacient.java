@@ -5,57 +5,84 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 
 public class Pacient {
+
+private Integer patientId;
+
 @NotBlank(message = ("El campo no puede estar vacio"))  
-private  String pacientName;
+private  String patientName;
 @NotBlank(message = ("El campo no puede estar vacio"))
 @Min(value = 0, message = "La edad debe ser mayor o igual a 0")
 @Max(value = 100, message = "La edad debe ser menor a 100")
-private  int age;
+private  String patientAge;
 @NotBlank(message = ("El campo no puede estar vacio"))
-private  String information;
+private  String patientInformation;
 private  String date;
-private long id;
-public long getId() {
-    return id;
-}
-public void setId(long id) {
-    this.id = id;
-}
+
+
 public Pacient() {
 }
-public Pacient(@NotBlank(message = "El campo no puede estar vacio") String pacientName,
-        @NotBlank(message = "El campo no puede estar vacio") int age,
-        @NotBlank(message = "El campo no puede estar vacio") String information, String date, long id) {
-    this.pacientName = pacientName;
-    this.age = age;
-    this.information = information;
+
+
+public Pacient(Integer patientId, String patientName,String patientAge, String patientInformation, String date) {
+    this.patientId = patientId;
+    this.patientName = patientName;
+    this.patientAge = patientAge;
+    this.patientInformation = patientInformation;
     this.date = date;
-    this.id = id;
 }
-public String getPacientName() {
-    return pacientName;
+
+
+public Integer getPatientId() {
+    return patientId;
 }
-public int getAge() {
-    return age;
+
+
+public String getPatientName() {
+    return patientName;
 }
-public String getInformation() {
-    return information;
+
+
+public String getPatientAge() {
+    return patientAge;
 }
+
+
+public String getPatientInformation() {
+    return patientInformation;
+}
+
+
 public String getDate() {
     return date;
 }
-public void setPacientName(String pacientName) {
-    this.pacientName = pacientName;
+
+
+public void setPatientId(Integer patientId) {
+    this.patientId = patientId;
 }
-public void setAge(int age) {
-    this.age = age;
+
+
+public void setPatientName(String patientName) {
+    this.patientName = patientName;
 }
-public void setInformation(String information) {
-    this.information = information;
+
+
+public void setPatientAge(String patientAge) {
+    this.patientAge = patientAge;
 }
+
+
+public void setPatientInformation(String patientInformation) {
+    this.patientInformation = patientInformation;
+}
+
+
 public void setDate(String date) {
     this.date = date;
 }
+
+
+
 
 
 

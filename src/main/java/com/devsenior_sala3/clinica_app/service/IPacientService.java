@@ -8,12 +8,11 @@ import com.devsenior_sala3.clinica_app.model.Pacient;
 public interface IPacientService {
     
 
-List<Pacient>listarpacients();
-Optional<Pacient>listarPorId();
-Pacient agregar(Pacient pacient);
-Pacient actualizar(long id, Pacient pacient);
-boolean eliminar(long id);
-Optional<Pacient> listarPorId(long id);
+List<Pacient>getPatients();
+Optional<Pacient>getPatientsById(Integer patientId);
+Pacient addPatient(Pacient pacient);
+Pacient update(Integer patientId, Pacient patient);
+boolean delete(Integer patientId);
 
 }
 

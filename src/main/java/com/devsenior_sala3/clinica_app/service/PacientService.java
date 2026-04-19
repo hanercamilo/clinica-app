@@ -11,46 +11,39 @@ import com.devsenior_sala3.clinica_app.repository.PacientRepository;
 @Service
 public class PacientService implements IPacientService {
     @Autowired
-    private final PacientRepository pacientRepository;
+    private final PacientRepository patientRepository;
 
-    public PacientService(PacientRepository pacientRepository) {
-        this.pacientRepository = pacientRepository;
+    public PacientService(PacientRepository patientRepository) {
+        this.patientRepository = patientRepository;
     }
 
     @Override
-    public List<Pacient> listarpacients() {
-        return pacientRepository.findAll();
-
+    public List<Pacient> getPatients() {
+        return patientRepository.findAll();
     }
 
     @Override
-    public Optional<Pacient> listarPorId(long id) {
-        return pacientRepository.findById(id);
+    public Optional<Pacient> getPatientsById(Integer patientId) {
+        return patientRepository.findById(patientId);
     }
 
     @Override
-    public Pacient agregar(Pacient pacient) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'agregar'");
+    public Pacient addPatient(Pacient patient) {
+        return patientRepository.save(patient);
     }
 
     @Override
-    public Pacient actualizar(long id, Pacient pacient) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'actualizar'");
+    public Pacient update(Integer patientId,Pacient patient) {
+        return patientRepository.update(patient);
     }
 
     @Override
-    public boolean eliminar(long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'eliminar'");
+    public boolean delete(Integer patientId) {
+        if (patientRepository.existsById(patientId)) {
+            patientRepository.deleteById(patientId);
+            return true;
+        }
+        return false;
     }
-
-    @Override
-    public Optional<Pacient> listarPorId() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'listarPorId'");
-    }
-    
 
 }
